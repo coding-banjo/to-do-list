@@ -126,7 +126,7 @@ body {
   min-height: 5rem;
 }
 
-#currentList {
+#currentListContainer {
   display: flex;
   justify-content: center;
   background-color: white;
