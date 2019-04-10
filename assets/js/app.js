@@ -40,7 +40,7 @@ const nowUser = userPresence => {
           console.log(doc.data())
           let itemElem = document.createElement('li')
           itemElem.innerHTML = `
-            ${doc.data().text}
+            ${doc.data().name}
             <button>${doc.data().isDone ? 'Done' : 'Not Done'}</button>
           `
           document.querySelector('#currentList').append(itemElem)
