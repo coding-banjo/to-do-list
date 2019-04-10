@@ -104,6 +104,6 @@ document.querySelector('#createNewListItem').addEventListener('click', e => {
   e.preventDefault()
   createNewListItem()
 })
-document.addEventListener('click', ({ target: { className, dataset } }) => className.indexOf('cmpltBtn') >= 0 ? toggleCmplt(dataSet) : null)
+document.addEventListener('click', ({ target: { className, dataset } }) => className.indexOf('cmpltBtn') >= 0 ? toggleCmplt(dataset) : null)
 
 auth().onAuthStateChanged(userPresence => userPresence ? nowUser(userPresence) : null)
