@@ -2,6 +2,7 @@ const { firebase, firebaseui } = window
 const { firestore, auth } = firebase
 let user,
   currentListId
+let currentListItems = []
 
 const config = {
   apiKey: 'AIzaSyAFmkDynYd4zYul38bMyDXyPRomy0PmC8U',
@@ -41,11 +42,12 @@ const getLists = _ => {
             console.log(doc.id)
             currentListId = doc.id
           }
-          doc.data().items.forEach(item => {
+          currentListItems = doc.data().items
+          doc.data().items.forEach((item, j) => {
             let itemElem = document.createElement('div')
             itemElem.innerHTML = `
             <span>${item.value}</span>
-            <button data-value="${item.value}" data-isCmplt="${item.isDone}" data-itemId="${item.id}" data-listId="${doc.id}" data-tmStmp="${item.timeStamp}" class="cmpltBtn ${item.isDone ? 'done' : 'notDone'}">${item.isDone ? 'Done' : 'Not Done'}</button>
+            <button data-index="${j}" class="cmpltBtn ${item.isDone ? 'done' : 'notDone'}">${item.isDone ? 'Done' : 'Not Done'}</button>
             `
             document.querySelector('#currentList').append(itemElem)
           })
@@ -85,14 +87,10 @@ const createNewListItem = _ => {
   getLists()
 }
 
-const toggleCmplt = ({ itemid, listid, iscmplt, value, tmstmp }) => {
-  db.collection('lists').doc(listid).update({
-    items: firestore.FieldValue.arrayUnion({
-      id: itemid,
-      value: value,
-      isDone: iscmplt !== 'true',
-      timeStamp: tmstmp
-    })
+const toggleCmplt = ({ index }) => {
+  currentListItems[parseInt(index)].isDone = !currentListItems[parseInt(index)].isDone
+  db.collection('lists').doc(currentListId).update({
+    items: currentListItems
   })
   getLists()
 }
