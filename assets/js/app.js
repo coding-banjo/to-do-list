@@ -44,7 +44,7 @@ const getLists = _ => {
           doc.data().items.forEach(item => {
             let itemElem = document.createElement('li')
             itemElem.innerHTML = `
-            ${item.value}
+            <span>${item.value}</span>
             <button>${item.isDone ? 'Done' : 'Not Done'}</button>
             `
             document.querySelector('#currentList').append(itemElem)
