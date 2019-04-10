@@ -35,7 +35,7 @@ const nowUser = userPresence => {
     .then(({ docs }) => {
       if (docs) {
         document.querySelector('#currentList').innerHTML = ''
-        document.querySelector('#currentList').style.display = 'block'
+        document.querySelector('#currentListContainer').style.display = 'block'
         docs.forEach(doc => {
           console.log(doc.data())
           doc.data().items.forEach(item => {
