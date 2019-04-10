@@ -31,7 +31,7 @@ const nowUser = userPresence => {
   user = userPresence
   db.collection('lists').where('uid', '==', user.uid).get()
     .then(r => {
-      r.docs().forEach(doc => {
+      r.docs.forEach(doc => {
         console.log(doc.data())
       })
     })
