@@ -30,7 +30,7 @@ ui.start('#auth-container', uiConfig)
 const db = firestore()
 
 const getLists = _ => {
-  db.collection('lists').where('uid', '==', user.uid).orderBy('timeStamp').get()
+  db.collection('lists').orderBy('timeStamp').where('uid', '==', user.uid).get()
     .then(({ docs }) => {
       if (docs) {
         document.querySelector('#currentList').innerHTML = ''
@@ -52,6 +52,7 @@ const getLists = _ => {
         })
       }
     })
+    .catch(e => console.error(e))
 }
 const nowUser = userPresence => {
   document.querySelector('#auth-container').style.display = 'none'
