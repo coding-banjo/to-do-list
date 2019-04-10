@@ -85,16 +85,16 @@ const createNewListItem = _ => {
   getLists()
 }
 
-const toggleCmplt = ({ itemId, listId, isCmplt, value, tmStmp }) => {
-  console.log(itemId, listId, isCmplt, value, tmStmp)
-  db.collection('lists').doc(listId).update({
-    items: firestore.FieldValue.arrayUnion({
-      id: itemId,
-      value: value,
-      isDone: isCmplt !== 'true',
-      timeStamp: tmStmp
-    })
-  })
+const toggleCmplt = dataset => {
+  console.log(dataset)
+  // db.collection('lists').doc(listId).update({
+  //   items: firestore.FieldValue.arrayUnion({
+  //     id: itemId,
+  //     value: value,
+  //     isDone: isCmplt !== 'true',
+  //     timeStamp: tmStmp
+  //   })
+  // })
   getLists()
 }
 
