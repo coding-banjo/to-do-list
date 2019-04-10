@@ -30,7 +30,7 @@ ui.start('#auth-container', uiConfig)
 const db = firestore()
 
 const getLists = _ => {
-  db.collection('lists').orderBy('timeStamp').where('uid', '==', user.uid).get()
+  db.collection('lists').where('uid', '==', user.uid).get()
     .then(({ docs }) => {
       if (docs) {
         document.querySelector('#currentList').innerHTML = ''
