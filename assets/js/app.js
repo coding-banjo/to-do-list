@@ -30,7 +30,7 @@ ui.start('#auth-container', uiConfig)
 const db = firestore()
 
 const getLists = _ => {
-  db.collection('lists').where('uid', '==', user.uid).get()
+  db.collection('lists').where('uid', '==', user.uid).orderBy('timeStamp').get()
     .then(({ docs }) => {
       if (docs) {
         document.querySelector('#currentList').innerHTML = ''
@@ -42,10 +42,10 @@ const getLists = _ => {
             currentListId = doc.id
           }
           doc.data().items.forEach(item => {
-            let itemElem = document.createElement('li')
+            let itemElem = document.createElement('div')
             itemElem.innerHTML = `
             <span>${item.value}</span>
-            <button>${item.isDone ? 'Done' : 'Not Done'}</button>
+            <button data-value="${item.value}" data-isCmplt="${item.isDone}" data-itemId="${item.id}" data-listId="${doc.id}" class="cmpltBtn ${item.isDone ? 'done' : 'notDone'}">${item.isDone ? 'Done' : 'Not Done'}</button>
             `
             document.querySelector('#currentList').append(itemElem)
           })
@@ -65,7 +65,8 @@ const createNewList = _ => {
   db.collection('lists').doc(id).set({
     name: document.querySelector('#newList').value,
     items: [],
-    uid: user.uid
+    uid: user.uid,
+    timeStamp: Date.now()
   })
   getLists()
 }
@@ -76,7 +77,19 @@ const createNewListItem = _ => {
     items: firestore.FieldValue.arrayUnion({
       id: currentItemId,
       value: document.querySelector('#newItem').value,
-      isDone: false
+      isDone: false,
+      timeStamp: Date.now()
+    })
+  })
+  getLists()
+}
+
+const toggleCmplt = ({ itemId, listId, isCmplt, value }) => {
+  db.collection('lists').doc(listId).update({
+    items: firestore.FieldValue.arrayUnion({
+      id: itemId,
+      value: value,
+      isDone: isCmplt !== 'true'
     })
   })
   getLists()
@@ -90,5 +103,6 @@ document.querySelector('#createNewListItem').addEventListener('click', e => {
   e.preventDefault()
   createNewListItem()
 })
+document.addEventListener('click', ({ target: { className, dataSet } }) => className.indexOf('cmpltBtn') >= 0 ? toggleCmplt(dataSet) : null)
 
 auth().onAuthStateChanged(userPresence => userPresence ? nowUser(userPresence) : null)
