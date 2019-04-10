@@ -187,7 +187,9 @@ body {
 }
 #done {
   background-color: green;
+  color: green;
 }
 #notDone {
   background-color: red;
+  color: red;
 }
