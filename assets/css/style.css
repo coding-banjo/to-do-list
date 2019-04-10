@@ -181,3 +181,7 @@ body {
 #createNewListItem:focus {
   outline: none;
 }
+
+#currentList {
+  color: black
+}
