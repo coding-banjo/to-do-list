@@ -1,5 +1,6 @@
 const { firebase, firebaseui } = window
 const { firestore, auth } = firebase
+const user
 const config = {
   apiKey: 'AIzaSyAFmkDynYd4zYul38bMyDXyPRomy0PmC8U',
   authDomain: 'coding-banjo-to-do-list.firebaseapp.com',
@@ -23,10 +24,29 @@ const uiConfig = {
 firebase.initializeApp(config)
 const ui = new firebaseui.auth.AuthUI(auth())
 ui.start('#auth-container', uiConfig)
+const db = firestore()
 
-const cont = user => {
-  console.log(user)
+const nowUser = user => {
   document.querySelector('#auth-container').style.display = 'none'
-  
+  user = user
+  db.collection('lists').where('uid', '==', user.uid).get()
+    .then(r => {
+      console.log(r)
+    })
 }
-auth().onAuthStateChanged(user => user ? cont(user) : null)
+
+const createNewList = _ => {
+  const id = db.collection('lists').doc().id
+  db.collection('lists').doc(id).set({
+    name: document.querySelector('#newList').nodeValue,
+    items: [],
+    uid: user.uid    
+  })
+}
+
+
+document.querySelector('#createNewList').addEventListener('click', e => {
+  e.preventDefault()
+  createNewList()
+})
+auth().onAuthStateChanged(user => user ? nowUser(user) : null)
