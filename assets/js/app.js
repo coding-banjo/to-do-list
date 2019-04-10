@@ -24,3 +24,9 @@ firebase.initializeApp(config)
 const ui = new firebaseui.auth.AuthUI(auth())
 ui.start('#auth-container', uiConfig)
 
+const cont = user => {
+  console.log(user)
+  document.querySelector('#auth-container').style.display = 'none'
+  
+}
+auth().onAuthStateChanged(user => user ? cont(user) : null)
