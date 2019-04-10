@@ -31,14 +31,16 @@ const nowUser = userPresence => {
   user = userPresence
   db.collection('lists').where('uid', '==', user.uid).get()
     .then(r => {
-      console.log(r)
+      r.docs().forEach(doc => {
+        console.log(doc.data())
+      })
     })
 }
 
 const createNewList = _ => {
   const id = db.collection('lists').doc().id
   db.collection('lists').doc(id).set({
-    name: document.querySelector('#newList').nodeValue,
+    name: document.querySelector('#newList').value,
     items: [],
     uid: user.uid
   })
