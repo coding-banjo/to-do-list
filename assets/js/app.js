@@ -45,7 +45,7 @@ const getLists = _ => {
             let itemElem = document.createElement('div')
             itemElem.innerHTML = `
             <span>${item.value}</span>
-            <button data-value="${item.value}" data-isCmplt="${item.isDone}" data-itemId="${item.id}" data-listId="${doc.id}" class="cmpltBtn ${item.isDone ? 'done' : 'notDone'}">${item.isDone ? 'Done' : 'Not Done'}</button>
+            <button data-value="${item.value}" data-isCmplt="${item.isDone}" data-itemId="${item.id}" data-listId="${doc.id}" data-tmStmp="${item.timeStamp}" class="cmpltBtn ${item.isDone ? 'done' : 'notDone'}">${item.isDone ? 'Done' : 'Not Done'}</button>
             `
             document.querySelector('#currentList').append(itemElem)
           })
@@ -85,12 +85,14 @@ const createNewListItem = _ => {
   getLists()
 }
 
-const toggleCmplt = ({ itemId, listId, isCmplt, value }) => {
+const toggleCmplt = ({ itemId, listId, isCmplt, value, tmStmp }) => {
+  console.log(itemId, listId, isCmplt, value, tmStmp)
   db.collection('lists').doc(listId).update({
     items: firestore.FieldValue.arrayUnion({
       id: itemId,
       value: value,
-      isDone: isCmplt !== 'true'
+      isDone: isCmplt !== 'true',
+      timeStamp: tmStmp
     })
   })
   getLists()
