@@ -1,6 +1,7 @@
 const { firebase, firebaseui } = window
 const { firestore, auth } = firebase
 let user
+
 const config = {
   apiKey: 'AIzaSyAFmkDynYd4zYul38bMyDXyPRomy0PmC8U',
   authDomain: 'coding-banjo-to-do-list.firebaseapp.com',
@@ -9,6 +10,7 @@ const config = {
   storageBucket: 'coding-banjo-to-do-list.appspot.com',
   messagingSenderId: '613589343487'
 }
+
 const uiConfig = {
   signInSuccessUrl: 'index.html',
   signInOptions: [
@@ -30,10 +32,20 @@ const nowUser = userPresence => {
   document.querySelector('#auth-container').style.display = 'none'
   user = userPresence
   db.collection('lists').where('uid', '==', user.uid).get()
-    .then(r => {
-      r.docs.forEach(doc => {
-        console.log(doc.data())
-      })
+    .then(({ docs }) => {
+      if (docs) {
+        document.querySelector('#currentList').innerHTML = ''
+        document.querySelector('#currentList').style.display = 'block'
+        docs.forEach(doc => {
+          console.log(doc.data())
+          let itemElem = document.createElement('li')
+          itemElem.innerHTML = `
+            ${doc.data().text}
+            <button>${doc.data().isDone ? 'Done' : 'Not Done'}</button>
+          `
+          document.querySelector('#currentList').append(itemElem)
+        })
+      }
     })
 }
 
