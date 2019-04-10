@@ -185,11 +185,11 @@ body {
 #currentList {
   color: black
 }
-#done {
+.done {
   background-color: green;
   color: green;
 }
-#notDone {
+.notDone {
   background-color: red;
   color: red;
 }
