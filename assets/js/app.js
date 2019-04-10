@@ -38,7 +38,8 @@ const getLists = _ => {
         docs.forEach((doc, i) => {
           console.log(doc.data())
           if (i === 0) {
-            currentListId = doc.data().id
+            console.log(doc.id)
+            currentListId = doc.id
           }
           doc.data().items.forEach(item => {
             let itemElem = document.createElement('li')
