@@ -38,12 +38,14 @@ const nowUser = userPresence => {
         document.querySelector('#currentList').style.display = 'block'
         docs.forEach(doc => {
           console.log(doc.data())
-          let itemElem = document.createElement('li')
-          itemElem.innerHTML = `
-            ${doc.data().name}
-            <button>${doc.data().isDone ? 'Done' : 'Not Done'}</button>
-          `
-          document.querySelector('#currentList').append(itemElem)
+          doc.data().items.forEach(item => {
+            let itemElem = document.createElement('li')
+            itemElem.innerHTML = `
+            ${item.name}
+            <button>${item.isDone ? 'Done' : 'Not Done'}</button>
+            `
+            document.querySelector('#currentList').append(itemElem)
+          })
         })
       }
     })
