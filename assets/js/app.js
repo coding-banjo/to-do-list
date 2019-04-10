@@ -44,7 +44,7 @@ const nowUser = userPresence => {
             ${item.name}
             <button>${item.isDone ? 'Done' : 'Not Done'}</button>
             `
-            document.querySelector('#currentList').append(itemElem)
+            document.querySelector('#currentListContainer').append(itemElem)
           })
         })
       }
