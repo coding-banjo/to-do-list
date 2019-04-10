@@ -134,7 +134,9 @@ body {
   min-height: 5rem;
   display: none;
 }
-
+#listItemCreateForm p {
+  margin-top: 10px;
+}
 #listItemCreateForm {
   display: flex;
   justify-content: center;
