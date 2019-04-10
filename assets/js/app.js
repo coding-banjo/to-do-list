@@ -62,7 +62,7 @@ const nowUser = userPresence => {
 const createNewList = _ => {
   currentListId = db.collection('lists').doc().id
 
-  db.collection('lists').doc(id).set({
+  db.collection('lists').doc(currentListId).set({
     name: document.querySelector('#newList').value,
     items: [],
     uid: user.uid,
