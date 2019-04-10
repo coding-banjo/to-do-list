@@ -1,0 +1,182 @@
+body {
+  background-color: rgb(0, 58, 112);
+  color: white;
+}
+
+@media (max-width: 480px) {
+  .firebaseui-list-item button {
+    width: 80% !important;
+    /* margin: 0 20px 0 20px; */
+    margin: 6px !important;
+  }
+}
+
+.mdl-card.mdl-shadow--2dp.firebaseui-container.firebaseui-id-page-sign-in {
+  position: fixed;
+  top: 10px;
+  right: 0;
+  left: 0
+}
+
+.firebaseui-idp-list {
+  display: flex;
+  justify-content: center;
+  margin-top: 24px;
+}
+
+.firebaseui-list-item button {
+  width: 80%;
+  margin: 0 20px 0 20px;
+}
+
+.firebaseui-idp-text.firebaseui-idp-text-long {
+  display: none;
+}
+
+.firebaseui-idp-text.firebaseui-idp-text-short {
+  display: table-cell;
+}
+
+.firebaseui-container {
+  max-width: 90%;
+}
+
+.firebaseui-card-footer {
+  display: none;
+}
+
+#auth-container {
+  background-color: rgb(1, 86, 165);
+  margin: 0px;
+  display: flex;
+  position: fixed;
+  /* top: 0; */
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 6rem;
+  width: 100%
+}
+
+#toDoList {
+  margin-top: 1rem;
+}
+
+#newList {
+  border: 1px solid rgba(0, 126, 243, 0.616);
+  background-color: rgba(0, 111, 216, 0.514);
+  border-radius: 10% 50%;
+  -webkit-border-radius: 10% 50%;
+  -moz-border-radius: 10% 50%;
+  -ms-border-radius: 10% 50%;
+  -o-border-radius: 10% 50%;
+  padding-left: 10px
+}
+
+#newList:hover {
+  border: 1px solid rgba(1, 90, 173, 0.616);
+  background-color: rgba(0, 69, 133, 0.514);
+}
+
+#newList:active {
+  border: 1px solid rgba(0, 89, 172, 0.616);
+  background-color: rgba(0, 69, 133, 0.514);
+}
+
+#newList:focus {
+  outline: none;
+}
+
+#createNewList {
+  border: 1px solid rgba(0, 126, 243, 0.616);
+  background-color: rgba(0, 111, 216, 0.514);
+  border-radius: 10% 50%;
+  -webkit-border-radius: 10% 50%;
+  -moz-border-radius: 10% 50%;
+  -ms-border-radius: 10% 50%;
+  -o-border-radius: 10% 50%;
+  padding-left: 10px;
+  color: white;
+}
+
+#createNewList:hover {
+  border: 1px solid rgba(1, 90, 173, 0.616);
+  background-color: rgba(0, 69, 133, 0.514);
+}
+
+#createNewList:active {
+  border: 1px solid rgba(81, 171, 255, 0.616);
+  background-color: rgba(0, 69, 133, 0.514);
+}
+
+#createNewList:focus {
+  outline: none;
+}
+
+#listCreateForm {
+  display: flex;
+  justify-content: center;
+}
+
+#availableLists {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  margin: 10px;
+  min-height: 5rem;
+}
+
+#currentList {
+  display: flex;
+  justify-content: center;
+  background-color: white;
+  margin: 10px;
+  min-height: 5rem;
+  display: none;
+}
+
+#listItemCreateForm {
+  display: flex;
+  justify-content: center;
+  margin-top: 10px;
+  display: none;
+}
+#newItem {
+  border: 1px solid rgba(122, 122, 122, 0.616);
+  background-color: rgba(0, 89, 172, 0.616);
+  border-radius: 10% 50%;
+  -webkit-border-radius: 10% 50%;
+  -moz-border-radius: 10% 50%;
+  -ms-border-radius: 10% 50%;
+  -o-border-radius: 10% 50%;
+  padding-left: 10px;
+  color: black;
+}
+
+#newItem:hover {}
+
+#newItem:active {}
+
+#newItem:focus {
+  outline: none;
+}
+
+#createNewListItem {
+  border: 1px solid rgba(122, 122, 122, 0.616);
+  background-color: rgba(0, 89, 172, 0.616);
+  border-radius: 10% 50%;
+  -webkit-border-radius: 10% 50%;
+  -moz-border-radius: 10% 50%;
+  -ms-border-radius: 10% 50%;
+  -o-border-radius: 10% 50%;
+  padding-left: 10px;
+  color: black;
+}
+
+#createNewListItem:hover {}
+
+#createNewListItem:active {}
+
+#createNewListItem:focus {
+  outline: none;
+}

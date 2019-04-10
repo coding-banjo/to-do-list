@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>To Do List</title>
+  <link href="https://fonts.googleapis.com/css?family=Barlow+Condensed" rel="stylesheet">
+  <link rel="stylesheet" href="./assets/css/reset.css">
+  <link type="text/css" rel="stylesheet" href="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.css" />
+  <link rel="stylesheet" href="./assets/css/style.css">
+</head>
+
+<body>
+  <div id="toDoList">
+    <form id="listCreateForm">
+      <p>
+        <input type="text" name="list" id="newList">
+        <button id="createNewList">+ New List</button>
+      </p>
+    </form>
+    <div id="currentList">
+      <form id="listItemCreateForm">
+        <p>
+          <input type="text" name="item" id="newItem">
+          <button id="createNewListItem">+ New Item</button>
+        </p>
+      </form>
+    </div>
+    <div id="availableLists">
+
+    </div>
+  </div>
+  <div id="auth-container"></div>
+  <script src="https://www.gstatic.com/firebasejs/5.9.3/firebase.js"></script>
+  <script src="https://cdn.firebase.com/libs/firebaseui/3.5.2/firebaseui.js"></script>
+  <script src="./assets/js/app.js"></script>
+</body>
+
+</html>
