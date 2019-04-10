@@ -37,7 +37,7 @@ const getLists = _ => {
         document.querySelector('#currentListContainer').style.display = 'block'
         docs.forEach((doc, i) => {
           console.log(doc.data())
-          if (!i) {
+          if (i === 0) {
             currentListId = doc.data().id
           }
           doc.data().items.forEach(item => {
